@@ -1,7 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
+   // id 'dagger.hilt.android.plugin'
 }
+
 
 android {
     namespace = "com.example.docusignlivepad"
@@ -51,17 +55,23 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
+    implementation ("com.google.dagger:hilt-android:2.48")
+    kapt ("com.google.dagger:hilt-android-compiler:2.48")
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.9.20")
     implementation ("com.squareup.okhttp3:okhttp:4.9.1")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
     implementation ("com.squareup.retrofit2:retrofit:2.7.2")
     implementation ("com.squareup.retrofit2:converter-gson:2.7.2")
     implementation ("com.squareup.retrofit2:converter-scalars:2.7.2")
     implementation ("com.squareup.retrofit2:adapter-rxjava2:2.3.0")
-
     implementation ("com.docusign:androidsdk:1.4.0")
     implementation ("com.docusign:sdk-common:1.4.0")
     implementation ("com.docusign:sdk-esign-api:1.4.0")
     implementation ("com.docusign:sdk-offline-signing:1.4.0")
-    implementation ("androidx.work:work-runtime-ktx:2.7.0")
+    implementation("androidx.work:work-runtime-ktx:2.7.1") // Ensure to use the latest version
 }
+
+kapt {
+    correctErrorTypes = true
+}
+

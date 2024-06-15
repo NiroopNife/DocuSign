@@ -14,10 +14,15 @@ import com.docusign.androidsdk.util.DSMode
 import com.example.docusignlivepad.Utils.Constants
 import com.example.docusignlivepad.data.DocuSignRepository
 import com.example.docusignlivepad.model.TokenResponseModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import javax.inject.Inject
 
-class DocuSignViewModel(private val repository: DocuSignRepository) : ViewModel() {
+@HiltViewModel
+class DocuSignViewModel @Inject constructor(
+    private val repository: DocuSignRepository
+) : ViewModel() {
 
 
     fun initializeDocuSign(applicationContext: Context) {
@@ -34,11 +39,11 @@ class DocuSignViewModel(private val repository: DocuSignRepository) : ViewModel(
         }
     }
 
-    fun fetchToken(authorization: String, requestBody: Map<String, String>) : LiveData<Response<TokenResponseModel>> {
-        val responseLiveData = MutableLiveData<Response<TokenResponseModel>>()
+    fun fetchToken(authorization: String, requestBody: Map<String, String>) : String {
+        var responseLiveData:String="";
         viewModelScope.launch {
-            val response = repository.fetchToken(authorization, requestBody)
-            responseLiveData.value = response
+            val response:String = repository.fetchToken()
+            responseLiveData = response
         }
         return responseLiveData
     }
