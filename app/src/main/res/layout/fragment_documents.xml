@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+
+    <ExpandableListView
+        android:id="@+id/documentsListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clipToPadding="false"
+        android:background="@drawable/rounded_corner_with_background_color"
+        android:dividerHeight="0dp"
+        android:divider="@null"
+        android:groupIndicator="@null" />
+
+    <ExpandableListView
+        android:id="@+id/envelopsListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clipToPadding="false"
+        android:background="@drawable/rounded_corner_with_background_color"
+        android:dividerHeight="0dp"
+        android:layout_below="@id/documentsListView"
+        android:divider="@null"
+        android:groupIndicator="@null" />
+
+    <ExpandableListView
+        android:id="@+id/logsListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clipToPadding="false"
+        android:background="@drawable/rounded_corner_with_background_color"
+        android:dividerHeight="0dp"
+        android:layout_below="@id/envelopsListView"
+        android:divider="@null"
+        android:groupIndicator="@null" />
+
+</RelativeLayout>
