@@ -18,12 +18,14 @@ import com.docusign.androidsdk.util.DSMode
 import com.example.docusignlivepad.Utils.Constants
 import com.example.docusignlivepad.model.TokenResponseModel
 import com.example.docusignlivepad.viewmodel.DocuSignViewModel
+import com.example.docusignlivepad.viewmodel.SampleDocuSignViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var docuSignViewModel: DocuSignViewModel
+    private lateinit var sampleDocuSignViewModel: SampleDocuSignViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +40,10 @@ class MainActivity : AppCompatActivity() {
             transaction.commit()
         }
 
+        sampleDocuSignViewModel = SampleDocuSignViewModel("token");
+        val tokenString=sampleDocuSignViewModel.tour
+
+        Log.d("MainActivity", "Token Response sampleDocuSignViewModel is $tokenString")
         docuSignViewModel = ViewModelProvider(this)[DocuSignViewModel::class.java]
         docuSignViewModel.initializeDocuSign(applicationContext)
 
